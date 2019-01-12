@@ -9,6 +9,22 @@ LCDDevice::LCDDevice(int rs, int en, int d4, int d5, int d6, int d7) : lcd(rs, e
 void LCDDevice::Write(const String& message)
 {
 	lcd.clear();
+	Append(message);
+}
+
+void LCDDevice::WriteRow(const String& message, int row)
+{
+	lcd.setCursor(0, row);
+	Append(message);
+}
+
+void LCDDevice::Clear()
+{
+	lcd.clear();
+}
+
+void LCDDevice::Append(const String& message)
+{
 	lcd.write(message.c_str());
 }
 

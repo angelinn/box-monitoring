@@ -12,6 +12,9 @@ public:
 
 public:
 	void Write(const String &);
+	void WriteRow(const String &, int);
+	void Clear();
+	void Append(const String &);
 	void DisplayOn();
 	void DisplayOff();
 
