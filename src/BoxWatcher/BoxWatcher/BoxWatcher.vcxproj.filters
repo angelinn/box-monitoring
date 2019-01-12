@@ -19,9 +19,15 @@
     <ClInclude Include="LCD.h">
       <Filter>Devices</Filter>
     </ClInclude>
+    <ClInclude Include="DHT.h">
+      <Filter>Devices</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LCD.cpp">
+      <Filter>Devices</Filter>
+    </ClCompile>
+    <ClCompile Include="DHT.cpp">
       <Filter>Devices</Filter>
     </ClCompile>
   </ItemGroup>

@@ -8,6 +8,7 @@ LCDDevice::LCDDevice(int rs, int en, int d4, int d5, int d6, int d7) : lcd(rs, e
 
 void LCDDevice::Write(const String& message)
 {
+	lcd.clear();
 	lcd.write(message.c_str());
 }
 
