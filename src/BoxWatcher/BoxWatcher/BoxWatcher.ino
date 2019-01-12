@@ -1,5 +1,5 @@
-#include "LCD.h"
-#include "DHT.h"
+#include "Devices\LCD.h"
+#include "Devices\DHT.h"
 
 // the setup function runs once when you press reset or power the board
 

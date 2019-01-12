@@ -112,13 +112,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DHT.h" />
-    <ClInclude Include="LCD.h" />
+    <ClInclude Include="Devices\DHT.h" />
+    <ClInclude Include="Devices\LCD.h" />
     <ClInclude Include="__vm\.BoxWatcher.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DHT.cpp" />
-    <ClCompile Include="LCD.cpp" />
+    <ClCompile Include="Devices\DHT.cpp" />
+    <ClCompile Include="Devices\LCD.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
