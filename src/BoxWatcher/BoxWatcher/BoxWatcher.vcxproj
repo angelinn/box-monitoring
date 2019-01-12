@@ -14,14 +14,14 @@
     <ProjectGuid>{C5F80730-F44F-4478-BDAE-6634EFC2CA88}</ProjectGuid>
     <RootNamespace>BoxWatcher</RootNamespace>
     <ProjectName>BoxWatcher</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>
-    </PlatformToolset>
+    <PlatformToolset />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -107,20 +107,22 @@
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="BoxWatcher.ino">
-      <FileType>CppCode</FileType>
-    </None>
+    <None Include="BoxWatcher.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Devices\DHT.h" />
     <ClInclude Include="Devices\LCD.h" />
     <ClInclude Include="Devices\PIR.h" />
+    <ClInclude Include="Devices\Reed.h" />
+    <ClInclude Include="Engine.h" />
     <ClInclude Include="__vm\.BoxWatcher.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Devices\DHT.cpp" />
     <ClCompile Include="Devices\LCD.cpp" />
     <ClCompile Include="Devices\PIR.cpp" />
+    <ClCompile Include="Devices\Reed.cpp" />
+    <ClCompile Include="Engine.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
