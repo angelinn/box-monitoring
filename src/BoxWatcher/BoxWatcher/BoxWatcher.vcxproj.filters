@@ -5,6 +5,9 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
+    <Filter Include="Devices">
+      <UniqueIdentifier>{9bf2fdf8-8b0d-4210-ae71-31fcaf9ad56a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="BoxWatcher.ino" />
@@ -13,5 +16,13 @@
     <ClInclude Include="__vm\.BoxWatcher.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LCD.h">
+      <Filter>Devices</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LCD.cpp">
+      <Filter>Devices</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
