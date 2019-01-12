@@ -22,12 +22,18 @@
     <ClInclude Include="Devices\LCD.h">
       <Filter>Devices</Filter>
     </ClInclude>
+    <ClInclude Include="Devices\PIR.h">
+      <Filter>Devices</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Devices\DHT.cpp">
       <Filter>Devices</Filter>
     </ClCompile>
     <ClCompile Include="Devices\LCD.cpp">
+      <Filter>Devices</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\PIR.cpp">
       <Filter>Devices</Filter>
     </ClCompile>
   </ItemGroup>
