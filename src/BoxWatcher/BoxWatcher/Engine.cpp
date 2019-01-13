@@ -20,7 +20,7 @@ void Engine::Setup()
 	pinMode(DOOR_LED, OUTPUT);
 	pinMode(SMOKE_LED, OUTPUT);
 
-	Serial.begin(9600);
+	Serial.begin(SERIAL_FREQ);
 	lcd = new LCDDevice(LCD_RS_PIN, LCD_E_PIN, LCD_D4_PIN, LCD_D5_PIN, LCD_D6_PIN, LCD_D7_PIN);
 	lcd->Write("Initializing...");
 
@@ -31,6 +31,17 @@ void Engine::Setup()
 }
 
 void Engine::Loop()
+{
+	CheckWeather();
+	CheckMovement();
+	CheckDoor();
+	CheckAir();
+
+	delay(SLEEP_MS);
+	ExecutePostLoopSteps();
+}
+
+void Engine::CheckWeather()
 {
 	DHTMeasurement weatherMeasurements = weather->GetMeasurements();
 	if (weatherMeasurements != lastMeasurement)
@@ -44,27 +55,35 @@ void Engine::Loop()
 
 		lastMeasurement = weatherMeasurements;
 	}
+}
 
+void Engine::CheckMovement()
+{
 	bool movement = pir->IsMovementDetected();
 	if (movement)
+	{
 		RaiseAlarm(AlarmType::Movement);
+	}
 	else if (movement != lastPirState)
 	{
 		lastPirState = movement;
 		updateRequested = true;
 	}
+}
 
+void Engine::CheckDoor()
+{
 	bool isDoorClosed = reed->IsClosed();
 	if (!isDoorClosed)
 		RaiseAlarm(AlarmType::Door);
+}
 
+void Engine::CheckAir()
+{
 	int gasMeasurement = gas->ReadGas();
-	Serial.println(gasMeasurement);
+
 	if (gasMeasurement > GAS_MAX_VALUE)
 		RaiseAlarm(AlarmType::Fumes);
-
-	delay(1000);
-	ExecutePostLoopSteps();
 }
 
 void StopAlarm()

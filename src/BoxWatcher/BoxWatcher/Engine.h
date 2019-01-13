@@ -4,6 +4,9 @@
 #include "Models/AlarmType.h"
 #include "External/QueueArray.h"
 
+#define SERIAL_FREQ 9600
+#define SLEEP_MS 1000
+
 #define LCD_D7_PIN 2
 #define LCD_D6_PIN 3
 #define LCD_D5_PIN 4
@@ -45,6 +48,10 @@ public:
 	void Setup();
 	void Loop();
 	void RaiseAlarm(AlarmType);
+	void CheckWeather();
+	void CheckDoor();
+	void CheckMovement();
+	void CheckAir();
 	
 private:
 	DHTMeasurement lastMeasurement;
