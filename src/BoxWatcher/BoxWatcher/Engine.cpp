@@ -10,8 +10,19 @@
 
 #include <Arduino.h>
 
-Engine::Engine() : lcd(nullptr), weather(nullptr), pir(nullptr), reed(nullptr), lastPirState(false), updateRequested(false), lastMeasurement({ 0 })
+Engine::Engine()
+	: lcd(nullptr), weather(nullptr), pir(nullptr), reed(nullptr),
+	  lastPirState(false), updateRequested(false), lastMeasurement({ 0 })
 {   }
+
+Engine::~Engine()
+{
+	delete lcd;
+	delete weather;
+	delete pir;
+	delete reed;
+	delete gas;
+}
 
 void Engine::Setup()
 {

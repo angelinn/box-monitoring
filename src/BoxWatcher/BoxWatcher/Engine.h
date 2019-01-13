@@ -44,17 +44,20 @@ class Engine
 
 public:
 	Engine();
+	Engine(const Engine &) = delete;
+	Engine& operator=(const Engine &) = delete;
+	~Engine();
 
 public:
 	void Setup();
 	void Loop();
-	void RaiseAlarm(AlarmType);
+
+private:
 	void CheckWeather();
 	void CheckDoor();
 	void CheckMovement();
 	void CheckAir();
-
-private:
+	void RaiseAlarm(AlarmType);
 	void StopAlarm();
 	void ExecutePostLoopSteps();
 
