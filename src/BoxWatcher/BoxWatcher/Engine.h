@@ -22,6 +22,11 @@
 #define MOVEMENT_LED 31
 #define SMOKE_LED 32
 
+#define BUZZER_PIN 7
+#define BUZZER_ALARM_FREQUENCY 600
+
+#define GAS_MAX_VALUE 400
+
 class LCDDevice;
 class DHT;
 class PIR;
@@ -48,7 +53,7 @@ public:
 	void Setup();
 	void Loop();
 	void RaiseAlarm(AlarmType);
-
+	
 private:
 	DHTMeasurement lastMeasurement;
 	bool lastPirState;

@@ -1,10 +1,8 @@
 #include "PIR.h"
-#include "Arduino.h"
+#include <Arduino.h>
 
-PIR::PIR(int pin) : pin(0)
-{
-	this->pin = pin;
-}
+PIR::PIR(int pin) : pin(pin)
+{   }
 
 bool PIR::IsMovementDetected()
 {

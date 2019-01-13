@@ -6,24 +6,23 @@
 #include "Devices\Reed.h"
 #include "Devices\Gas.h"
 
-#include <Arduino.h>
 #include "External/QueueArray.h"
 
-
+#include <Arduino.h>
 
 Engine::Engine() : lcd(nullptr), weather(nullptr), pir(nullptr), reed(nullptr), lastPirState(false), updateRequested(false), lastMeasurement({ 0 })
 {   }
 
 void Engine::Setup()
 {
-	pinMode(7, OUTPUT);
+	pinMode(BUZZER_PIN, OUTPUT);
 	pinMode(MOVEMENT_LED, OUTPUT);
 	pinMode(DOOR_LED, OUTPUT);
 	pinMode(SMOKE_LED, OUTPUT);
 
 	Serial.begin(9600);
 	lcd = new LCDDevice(LCD_RS_PIN, LCD_E_PIN, LCD_D4_PIN, LCD_D5_PIN, LCD_D6_PIN, LCD_D7_PIN);
-	lcd->Write("u plebs");
+	lcd->Write("Initializing...");
 
 	weather = new DHT(DHT_PIN);
 	pir = new PIR(PIR_PIN);
@@ -61,7 +60,7 @@ void Engine::Loop()
 
 	int gasMeasurement = gas->ReadGas();
 	Serial.println(gasMeasurement);
-	if (gasMeasurement > 400)
+	if (gasMeasurement > GAS_MAX_VALUE)
 		RaiseAlarm(AlarmType::Fumes);
 
 	delay(1000);
@@ -70,19 +69,19 @@ void Engine::Loop()
 
 void StopAlarm()
 {
-	Serial.println("Stopping alarm");
 	digitalWrite(DOOR_LED, LOW);
 	digitalWrite(MOVEMENT_LED, LOW);
 	digitalWrite(SMOKE_LED, LOW);
-	noTone(7);
+
+	noTone(BUZZER_PIN);
 }
 
 void Engine::ExecutePostLoopSteps()
 {
 	while (!functions.isEmpty())
 	{
-		Function f = functions.dequeue();
-		f();
+		Function function = functions.dequeue();
+		function();
 	}
 }
 
@@ -100,11 +99,9 @@ void Engine::RaiseAlarm(AlarmType type)
 		digitalWrite(DOOR_LED, HIGH);
 		break;
 	case AlarmType::Fumes:
-		Serial.println("Raising fumes alarm");
 		lcd->Write("Fumes alert!");
 		digitalWrite(SMOKE_LED, HIGH);
-		tone(7, 600);
-
+		tone(BUZZER_PIN, BUZZER_ALARM_FREQUENCY);
 		break;
 	}
 

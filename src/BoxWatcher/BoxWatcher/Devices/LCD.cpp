@@ -1,5 +1,5 @@
 #include "LCD.h"
-#include "Arduino.h"
+#include <Arduino.h>
 
 LCDDevice::LCDDevice(int rs, int en, int d4, int d5, int d6, int d7) : lcd(rs, en, d4, d5, d6, d7)
 {

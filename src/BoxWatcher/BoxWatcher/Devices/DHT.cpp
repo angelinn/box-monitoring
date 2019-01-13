@@ -1,9 +1,7 @@
 #include "DHT.h"
 
-DHT::DHT(int pin) : pin(0)
-{
-	this->pin = pin;
-}
+DHT::DHT(int pin) : pin(pin)
+{   }
 
 DHTMeasurement DHT::GetMeasurements()
 {
