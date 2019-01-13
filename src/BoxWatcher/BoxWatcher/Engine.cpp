@@ -7,12 +7,17 @@
 #include "Devices\Gas.h"
 
 #include <Arduino.h>
+#include "External/QueueArray.h"
+
+typedef void(*Function)(void);
+QueueArray<Function> functions;
 
 Engine::Engine() : lcd(nullptr), weather(nullptr), pir(nullptr), reed(nullptr), lastPirState(false), updateRequested(false), lastMeasurement({ 0 })
 {   }
 
 void Engine::Setup()
 {
+	pinMode(7, OUTPUT);
 	Serial.begin(9600);
 	lcd = new LCDDevice(LCD_RS_PIN, LCD_E_PIN, LCD_D4_PIN, LCD_D5_PIN, LCD_D6_PIN, LCD_D7_PIN);
 	lcd->Write("u plebs");
@@ -57,6 +62,22 @@ void Engine::Loop()
 		RaiseAlarm(AlarmType::Fumes);
 
 	delay(1000);
+	ExecutePostLoopSteps();
+}
+
+void Engine::StopAlarm()
+{
+	Serial.println("Stopping alarm");
+	noTone(7);
+}
+
+void Engine::ExecutePostLoopSteps()
+{
+	while (!functions.isEmpty())
+	{
+		Function f = functions.dequeue();
+		f();
+	}
 }
 
 void Engine::RaiseAlarm(AlarmType type)
@@ -64,13 +85,19 @@ void Engine::RaiseAlarm(AlarmType type)
 	switch (type)
 	{
 	case AlarmType::Movement:
-		lcd->Write("neshto shava");
+		lcd->Write("Movement");
+		lcd->WriteRow("Detected.", 1);
 		break;
 	case AlarmType::Door:
-		lcd->Write("vratata");
+		lcd->Write("Door is open.");
 		break;
 	case AlarmType::Fumes:
+		Serial.println("Raising fumes alarm");
 		lcd->Write("Fumes alert!");
+		tone(7, 600);
+		functions.enqueue(StopAlarm);
+
 		break;
 	}
 }
+

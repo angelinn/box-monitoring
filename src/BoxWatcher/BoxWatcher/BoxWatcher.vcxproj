@@ -116,6 +116,7 @@
     <ClInclude Include="Devices\PIR.h" />
     <ClInclude Include="Devices\Reed.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="External\QueueArray.h" />
     <ClInclude Include="__vm\.BoxWatcher.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>

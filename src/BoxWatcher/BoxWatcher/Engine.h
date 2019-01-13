@@ -48,6 +48,10 @@ private:
 	bool updateRequested;
 
 private:
+	void StopAlarm();
+	void ExecutePostLoopSteps();
+
+private:
 	LCDDevice* lcd;
 	DHT* weather;
 	PIR* pir;

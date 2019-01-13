@@ -4,6 +4,9 @@
     <Filter Include="Devices">
       <UniqueIdentifier>{9bf2fdf8-8b0d-4210-ae71-31fcaf9ad56a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="External">
+      <UniqueIdentifier>{60efd85f-27c9-4146-8397-9a8d8d2360e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Devices\DHT.h">
@@ -22,6 +25,9 @@
     <ClInclude Include="__vm\.BoxWatcher.vsarduino.h" />
     <ClInclude Include="Devices\Gas.h">
       <Filter>Devices</Filter>
+    </ClInclude>
+    <ClInclude Include="External\QueueArray.h">
+      <Filter>External</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
