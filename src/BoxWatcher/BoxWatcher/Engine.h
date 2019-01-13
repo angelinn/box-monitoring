@@ -37,10 +37,11 @@ class PIR;
 class Reed;
 class Gas;
 
-typedef void(*Function)(void);
 
 class Engine
 {
+	typedef void(Engine::*Function)();
+
 public:
 	Engine();
 
@@ -59,7 +60,7 @@ private:
 	bool updateRequested;
 
 private:
-	//void StopAlarm();
+	void StopAlarm();
 	void ExecutePostLoopSteps();
 
 private:

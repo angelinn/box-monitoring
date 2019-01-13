@@ -86,7 +86,7 @@ void Engine::CheckAir()
 		RaiseAlarm(AlarmType::Fumes);
 }
 
-void StopAlarm()
+void Engine::StopAlarm()
 {
 	digitalWrite(DOOR_LED, LOW);
 	digitalWrite(MOVEMENT_LED, LOW);
@@ -100,7 +100,7 @@ void Engine::ExecutePostLoopSteps()
 	while (!functions.isEmpty())
 	{
 		Function function = functions.dequeue();
-		function();
+		(this->*function)();
 	}
 }
 
@@ -123,6 +123,6 @@ void Engine::RaiseAlarm(AlarmType type)
 		tone(BUZZER_PIN, BUZZER_ALARM_FREQUENCY);
 		break;
 	}
-
-	functions.enqueue(StopAlarm);
+	
+	functions.enqueue(&Engine::StopAlarm);
 }
