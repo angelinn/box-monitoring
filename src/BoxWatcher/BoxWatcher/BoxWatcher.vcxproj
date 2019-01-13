@@ -111,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Devices\DHT.h" />
+    <ClInclude Include="Devices\Gas.h" />
     <ClInclude Include="Devices\LCD.h" />
     <ClInclude Include="Devices\PIR.h" />
     <ClInclude Include="Devices\Reed.h" />
@@ -119,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Devices\DHT.cpp" />
+    <ClCompile Include="Devices\Gas.cpp" />
     <ClCompile Include="Devices\LCD.cpp" />
     <ClCompile Include="Devices\PIR.cpp" />
     <ClCompile Include="Devices\Reed.cpp" />

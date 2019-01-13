@@ -13,19 +13,23 @@
 
 #define PIR_PIN 23
 
-#define REED_PIN 29
+#define REED_PIN 8
+
+#define GAS_ANALOG_PIN 0
 
 class LCDDevice;
 class DHT;
 class PIR;
 class Reed;
+class Gas;
 
 enum AlarmType
 {
 	MissingNo = -1,
 	None,
 	Movement,
-	Door
+	Door,
+	Fumes
 };
 
 class Engine
@@ -48,4 +52,5 @@ private:
 	DHT* weather;
 	PIR* pir;
 	Reed* reed;
+	Gas* gas;
 };

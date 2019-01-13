@@ -20,6 +20,9 @@
     </ClInclude>
     <ClInclude Include="Engine.h" />
     <ClInclude Include="__vm\.BoxWatcher.vsarduino.h" />
+    <ClInclude Include="Devices\Gas.h">
+      <Filter>Devices</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Devices\DHT.cpp">
@@ -35,6 +38,9 @@
       <Filter>Devices</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Devices\Gas.cpp">
+      <Filter>Devices</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="BoxWatcher.ino" />
