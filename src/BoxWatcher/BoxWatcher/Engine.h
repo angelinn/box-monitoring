@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Devices/DHT.h"
+#include "Models/AlarmType.h"
 #include "External/QueueArray.h"
 
 #define LCD_D7_PIN 2
@@ -32,15 +33,6 @@ class DHT;
 class PIR;
 class Reed;
 class Gas;
-
-enum AlarmType
-{
-	MissingNo = -1,
-	None,
-	Movement,
-	Door,
-	Fumes
-};
 
 typedef void(*Function)(void);
 

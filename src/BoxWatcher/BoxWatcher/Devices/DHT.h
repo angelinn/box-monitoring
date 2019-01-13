@@ -1,22 +1,7 @@
 #pragma once
 
 #include <dht11.h>
-
-struct DHTMeasurement
-{
-	int temperature;
-	int humidity; 
-
-	bool operator==(const DHTMeasurement& rhs)
-	{
-		return temperature == rhs.temperature && humidity == rhs.humidity;
-	}
-
-	bool operator!=(const DHTMeasurement& rhs)
-	{
-		return !(*this == rhs);
-	}
-};
+#include "../Models/DHTMeasurement.h"
 
 class DHT
 {

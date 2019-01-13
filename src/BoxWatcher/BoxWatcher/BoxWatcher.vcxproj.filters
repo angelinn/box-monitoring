@@ -7,6 +7,9 @@
     <Filter Include="External">
       <UniqueIdentifier>{60efd85f-27c9-4146-8397-9a8d8d2360e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{d1b8e371-ae97-49ed-adba-7fd3b0c95390}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Devices\DHT.h">
@@ -28,6 +31,12 @@
     </ClInclude>
     <ClInclude Include="External\QueueArray.h">
       <Filter>External</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\DHTMeasurement.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\AlarmType.h">
+      <Filter>Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
