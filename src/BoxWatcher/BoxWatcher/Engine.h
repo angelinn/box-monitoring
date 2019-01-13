@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Devices/DHT.h"
+#include "External/QueueArray.h"
 
 #define LCD_D7_PIN 2
 #define LCD_D6_PIN 3
@@ -17,6 +18,10 @@
 
 #define GAS_ANALOG_PIN 0
 
+#define DOOR_LED 30
+#define MOVEMENT_LED 31
+#define SMOKE_LED 32
+
 class LCDDevice;
 class DHT;
 class PIR;
@@ -31,6 +36,8 @@ enum AlarmType
 	Door,
 	Fumes
 };
+
+typedef void(*Function)(void);
 
 class Engine
 {
@@ -48,9 +55,12 @@ private:
 	bool updateRequested;
 
 private:
-	void StopAlarm();
+	//void StopAlarm();
 	void ExecutePostLoopSteps();
 
+private:
+	QueueArray<Function> functions;
+	
 private:
 	LCDDevice* lcd;
 	DHT* weather;
