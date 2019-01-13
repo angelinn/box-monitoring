@@ -53,11 +53,6 @@ public:
 	void CheckDoor();
 	void CheckMovement();
 	void CheckAir();
-	
-private:
-	DHTMeasurement lastMeasurement;
-	bool lastPirState;
-	bool updateRequested;
 
 private:
 	void StopAlarm();
@@ -65,7 +60,10 @@ private:
 
 private:
 	QueueArray<Function> functions;
-	
+	DHTMeasurement lastMeasurement;
+	bool lastPirState;
+	bool updateRequested;
+
 private:
 	LCDDevice* lcd;
 	DHT* weather;

@@ -1,10 +1,10 @@
 #include "Engine.h"
 
-#include "Devices\LCD.h"
-#include "Devices\DHT.h"
-#include "Devices\PIR.h"
-#include "Devices\Reed.h"
-#include "Devices\Gas.h"
+#include "Devices/LCD.h"
+#include "Devices/DHT.h"
+#include "Devices/PIR.h"
+#include "Devices/Reed.h"
+#include "Devices/Gas.h"
 
 #include "External/QueueArray.h"
 
